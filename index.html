@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="LoreDesk is an intelligent design school memory system for preserving practical knowledge across batches."
+    />
+    <title>LoreDesk | Design School Memory System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script>
+      tailwind = {
+        config: {
+          darkMode: "class",
+          theme: {
+            extend: {
+              fontFamily: { inter: ["Inter", "ui-sans-serif", "system-ui"] },
+              colors: {
+                ink: "#161616",
+                bone: "#f4f4f4",
+                paper: "#ffffff",
+                mist: "#e0e0e0",
+                blue: { muted: "#0f62fe", ibm: "#0f62fe", deep: "#0043ce" },
+                moss: { DEFAULT: "#24a148", deep: "#198038", soft: "#defbe6" },
+                yolk: { DEFAULT: "#f1c21b", soft: "#fff0ad" },
+              },
+              boxShadow: {
+                soft: "0 12px 34px rgba(22, 22, 22, 0.08)",
+                tile: "0 1px 0 rgba(22, 22, 22, 0.06), 0 10px 24px rgba(22, 22, 22, 0.05)",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="bg-bone font-inter text-ink antialiased dark:bg-[#161616] dark:text-white">
+    <div id="toast" class="pointer-events-none fixed right-4 top-4 z-[80] translate-y-2 opacity-0 transition-all duration-300"></div>
+
+    <div class="min-h-screen lg:grid lg:grid-cols-[280px_1fr]">
+      <aside
+        id="sidebar"
+        class="fixed inset-y-0 left-0 z-50 w-[280px] -translate-x-full border-r border-[#e0e0e0] bg-paper/95 backdrop-blur-xl transition-transform duration-300 dark:border-white/15 dark:bg-[#161616]/95 lg:sticky lg:top-0 lg:h-screen lg:translate-x-0"
+      >
+        <div class="flex h-full flex-col">
+          <div class="flex h-20 items-center justify-between border-b border-[#e0e0e0] px-5 dark:border-white/15">
+            <a href="#home" class="group flex items-center gap-3" data-route-link>
+              <span class="grid h-10 w-10 place-items-center rounded-xl bg-blue-ibm text-white shadow-soft dark:bg-blue-ibm dark:text-white">
+                <i data-lucide="library-big" class="h-5 w-5"></i>
+              </span>
+              <span>
+                <span class="block text-lg font-bold tracking-tight">LoreDesk</span>
+                <span class="block text-xs font-medium text-[#525252] dark:text-[#c6c6c6]">Memory for makers</span>
+              </span>
+            </a>
+            <button class="icon-button lg:hidden" id="closeSidebar" aria-label="Close navigation">
+              <i data-lucide="x"></i>
+            </button>
+          </div>
+
+          <nav class="flex-1 space-y-1 px-3 py-5" id="navList" aria-label="Primary navigation"></nav>
+
+          <div class="border-t border-[#e0e0e0] p-4 dark:border-white/15">
+            <div class="rounded-2xl border border-[#e0e0e0] bg-[#f4f4f4] p-3 dark:border-white/15 dark:bg-[#262626]">
+              <div class="mb-3 flex items-center justify-between gap-3">
+                <div>
+                  <p class="text-sm font-semibold">Batch vault</p>
+                  <p class="text-xs text-[#525252] dark:text-[#c6c6c6]">2021-2026 indexed</p>
+                </div>
+                <span class="rounded-full bg-moss-soft px-2 py-1 text-xs font-semibold text-moss-deep dark:bg-[#198038] dark:text-white">Live</span>
+              </div>
+              <div class="h-2 overflow-hidden rounded-full bg-[#e0e0e0] dark:bg-white/15">
+                <div class="h-full w-[76%] rounded-full bg-blue-muted"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="min-w-0">
+        <header class="sticky top-0 z-40 border-b border-[#e0e0e0] bg-bone/90 backdrop-blur-xl dark:border-white/15 dark:bg-[#161616]/90">
+          <div class="flex h-20 items-center gap-3 px-4 sm:px-6 lg:px-8">
+            <button class="icon-button lg:hidden" id="openSidebar" aria-label="Open navigation">
+              <i data-lucide="menu"></i>
+            </button>
+
+            <form id="topSearchForm" class="relative hidden flex-1 md:block">
+              <i data-lucide="search" class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#525252] dark:text-[#c6c6c6]"></i>
+              <input
+                id="topSearch"
+                class="h-11 w-full rounded-2xl border border-[#e0e0e0] bg-paper pl-11 pr-4 text-sm outline-none transition focus:border-blue-ibm focus:ring-4 focus:ring-blue-ibm/10 dark:border-white/15 dark:bg-[#262626]"
+                placeholder="Search machine settings, vendors, failures, critique notes..."
+                autocomplete="off"
+              />
+            </form>
+
+            <button class="soft-button hidden sm:inline-flex" data-action="simulate-sync">
+              <i data-lucide="refresh-cw"></i>
+              Sync archive
+            </button>
+            <button class="primary-button" data-goto="upload">
+              <i data-lucide="plus"></i>
+              Upload
+            </button>
+            <button class="icon-button" id="themeToggle" aria-label="Toggle dark mode">
+              <i data-lucide="moon"></i>
+            </button>
+          </div>
+        </header>
+
+        <main id="app" class="px-4 py-6 sm:px-6 lg:px-8"></main>
+      </div>
+    </div>
+
+    <div id="overlay" class="fixed inset-0 z-40 hidden bg-black/30 backdrop-blur-sm lg:hidden"></div>
+
+    <template id="skeletonTemplate">
+      <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

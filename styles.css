@@ -1,0 +1,293 @@
+:root {
+  color-scheme: light;
+  --ring: rgba(15, 98, 254, 0.18);
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  min-height: 100vh;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 1rem;
+  padding: 0.75rem 0.875rem;
+  color: #525252;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.dark .nav-link {
+  color: #c6c6c6;
+}
+
+.nav-link:hover {
+  background: #e0e0e0;
+  color: rgb(22 22 22);
+  transform: translateX(2px);
+}
+
+.dark .nav-link:hover {
+  background: #262626;
+  color: rgb(255 255 255);
+}
+
+.nav-link.active {
+  background: #0f62fe;
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgb(15 98 254 / 0.18);
+}
+
+.dark .nav-link.active {
+  background: #0f62fe;
+  color: #ffffff;
+}
+
+.nav-link svg,
+.icon-button svg,
+.soft-button svg,
+.primary-button svg,
+.filter-pill svg,
+.chip svg {
+  height: 1rem;
+  width: 1rem;
+  flex: none;
+}
+
+.icon-button {
+  display: inline-grid;
+  height: 2.75rem;
+  width: 2.75rem;
+  place-items: center;
+  border-radius: 0.9rem;
+  border: 1px solid #e0e0e0;
+  background: #ffffff;
+  color: currentColor;
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.dark .icon-button {
+  border-color: rgb(255 255 255 / 0.16);
+  background: #262626;
+}
+
+.icon-button:hover,
+.soft-button:hover,
+.primary-button:hover,
+.filter-pill:hover {
+  transform: translateY(-1px);
+}
+
+.icon-button:active,
+.soft-button:active,
+.primary-button:active,
+.filter-pill:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.primary-button,
+.soft-button {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.95rem;
+  padding: 0.7rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.primary-button {
+  background: #0f62fe;
+  color: #ffffff;
+  box-shadow: 0 12px 28px rgb(15 98 254 / 0.2);
+}
+
+.dark .primary-button {
+  background: #0f62fe;
+  color: #ffffff;
+}
+
+.soft-button {
+  border: 1px solid #e0e0e0;
+  background: #ffffff;
+  color: #0f62fe;
+}
+
+.dark .soft-button {
+  border-color: rgb(255 255 255 / 0.16);
+  background: #262626;
+  color: #78a9ff;
+}
+
+.panel {
+  border: 1px solid #e0e0e0;
+  background: rgb(255 255 255 / 0.9);
+  box-shadow: 0 12px 34px rgb(22 22 22 / 0.07);
+  backdrop-filter: blur(18px);
+}
+
+.dark .panel {
+  border-color: rgb(255 255 255 / 0.16);
+  background: #262626;
+  box-shadow: 0 18px 44px rgb(0 0 0 / 0.28);
+}
+
+.tile {
+  border: 1px solid #e0e0e0;
+  background: #ffffff;
+  box-shadow: 0 1px 0 rgb(22 22 22 / 0.04), 0 10px 24px rgb(22 22 22 / 0.05);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.dark .tile {
+  border-color: rgb(255 255 255 / 0.16);
+  background: #262626;
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.05), 0 18px 38px rgb(0 0 0 / 0.2);
+}
+
+.tile:hover {
+  border-color: rgb(15 98 254 / 0.45);
+  box-shadow: 0 1px 0 rgb(22 22 22 / 0.04), 0 16px 36px rgb(22 22 22 / 0.08);
+  transform: translateY(-2px);
+}
+
+.filter-pill,
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  border-radius: 999px;
+  border: 1px solid #e0e0e0;
+  background: #ffffff;
+  color: #525252;
+  transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.filter-pill {
+  padding: 0.56rem 0.82rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.chip {
+  padding: 0.34rem 0.58rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.dark .filter-pill,
+.dark .chip {
+  border-color: rgb(255 255 255 / 0.16);
+  background: #262626;
+  color: #c6c6c6;
+}
+
+.filter-pill.active {
+  border-color: #0f62fe;
+  background: #0f62fe;
+  color: #ffffff;
+}
+
+.dark .filter-pill.active {
+  border-color: #0f62fe;
+  background: #0f62fe;
+  color: #ffffff;
+}
+
+.field {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid #e0e0e0;
+  background: #ffffff;
+  padding: 0.85rem 1rem;
+  outline: none;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.dark .field {
+  border-color: rgb(255 255 255 / 0.16);
+  background: #262626;
+}
+
+.field:focus {
+  border-color: #0f62fe;
+  box-shadow: 0 0 0 4px var(--ring);
+}
+
+.skeleton-card {
+  min-height: 220px;
+  border-radius: 1.5rem;
+  border: 1px solid rgb(22 22 22 / 0.08);
+  background:
+    linear-gradient(90deg, transparent, rgb(255 255 255 / 0.52), transparent),
+    linear-gradient(rgb(22 22 22 / 0.08) 18px, transparent 0),
+    linear-gradient(rgb(22 22 22 / 0.08) 14px, transparent 0),
+    linear-gradient(rgb(22 22 22 / 0.08) 14px, transparent 0),
+    rgb(255 253 248 / 0.72);
+  background-position: -220px 0, 24px 28px, 24px 70px, 24px 100px, 0 0;
+  background-size: 220px 100%, 62% 18px, 86% 14px, 48% 14px, 100% 100%;
+  background-repeat: no-repeat;
+  animation: shimmer 1.25s infinite;
+}
+
+.dark .skeleton-card {
+  border-color: rgb(255 255 255 / 0.08);
+  background:
+    linear-gradient(90deg, transparent, rgb(255 255 255 / 0.08), transparent),
+    linear-gradient(rgb(255 255 255 / 0.09) 18px, transparent 0),
+    linear-gradient(rgb(255 255 255 / 0.09) 14px, transparent 0),
+    linear-gradient(rgb(255 255 255 / 0.09) 14px, transparent 0),
+    rgb(255 255 255 / 0.04);
+  background-position: -220px 0, 24px 28px, 24px 70px, 24px 100px, 0 0;
+  background-size: 220px 100%, 62% 18px, 86% 14px, 48% 14px, 100% 100%;
+  background-repeat: no-repeat;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: calc(100% + 220px) 0, 24px 28px, 24px 70px, 24px 100px, 0 0;
+  }
+}
+
+.route-enter {
+  animation: route-in 260ms ease both;
+}
+
+@keyframes route-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
